@@ -26,6 +26,10 @@ class MainPage extends Page {
     get inputSearch() {
         return $('#query-builder-test');
     }
+
+    get linkPricing() {
+        return $('div.header-menu-wrapper a[href="/pricing"]');
+    }
   
     open () {
         return super.open();
@@ -54,6 +58,10 @@ class MainPage extends Page {
     async startSearch() {
         await browser.keys('Enter');
         await browser.pause(5000)
+    }
+
+    async clickLinkPricing() {
+        await this.linkPricing.click();
     }
 
 }

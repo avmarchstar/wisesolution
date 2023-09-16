@@ -6,6 +6,7 @@ const EnterprisePlanPage = require('../pageobjects/enterpriseplan.page');
 const NewsletterPage = require('../pageobjects/newsletter.page');
 const ConfirmationPage = require('../pageobjects/confirmation.page');
 const SearchPage = require('../pageobjects/search.page');
+const PricingPage = require('../pageobjects/pricing.page');
 
 
 describe('GitHub site', () => {
@@ -46,7 +47,7 @@ describe('GitHub site', () => {
         await EnterprisePlanPage.clickLinkRecommendedPlan();
     })
 
-    it('should scroll and subscribe. TestCase#3', async ()=>{
+    it.only('should scroll and subscribe. TestCase#3', async ()=>{
         await MainPage.open();
         await MainPage.linkSubscribe.scrollIntoView();
         await expect(MainPage.linkSubscribe).toBeClickable();
@@ -67,6 +68,16 @@ describe('GitHub site', () => {
         await MainPage.enterInputSearch();
         await MainPage.startSearch();
         await expect(SearchPage.searchSetFirstElem).toHaveHrefContaining('act');
+
+    })
+
+    it('should choose pricing and be exist. TestCase#5', async ()=>{
+        await MainPage.open();
+        await MainPage.clickLinkPricing();
+        await expect(PricingPage.textCompleteElem).toBeDisplayed();
+        await PricingPage.linkCompare.scrollIntoView();
+        await PricingPage.clickLinkCompare();
+        await expect(PricingPage.textCompareFeaturesElem).toHaveText('Compare features');
 
     })
 

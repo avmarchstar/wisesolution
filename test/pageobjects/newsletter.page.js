@@ -32,7 +32,7 @@ class NewsletterPage extends Page {
     }
 
     async clickCheckBoxPersonalized() {
-        if(!this.checkBoxPersonalized.isSelected()){
+        if(!await this.checkBoxPersonalized.isSelected()){
         await this.checkBoxPersonalized.click();
         }
     }
